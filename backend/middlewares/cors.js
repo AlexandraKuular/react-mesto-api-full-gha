@@ -1,6 +1,6 @@
 const allowedCors = [
-  'https://AlexandraKuular.nomoredomains.icu',
-  'http://AlexandraKuular.nomoredomains.icu',
+  'https://alexakuular.nomoredomains.co',
+  'http://alexkuular.nomoredomains.co',
   'http://localhost:3000',
 ];
 
