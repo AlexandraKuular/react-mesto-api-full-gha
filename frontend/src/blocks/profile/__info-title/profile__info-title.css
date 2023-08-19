@@ -1,0 +1,12 @@
+.profile__info-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+@media screen and (max-width: 960px) {
+  .profile__info-title {
+    justify-content: center;
+    margin-top: 26px;
+  }
+}

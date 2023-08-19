@@ -1,0 +1,19 @@
+.profile__info-btn {
+  max-width: 24px;
+  max-height: 24px;
+  cursor: pointer;
+}
+.profile__info-btn:hover {
+  opacity: 0.6;
+}
+@media screen and (max-width: 768px) {
+  .profile__info-btn {
+    max-width: 18px;
+    max-height: 18px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .profile__info-btn {
+    margin-left: 10px;
+  }
+}
