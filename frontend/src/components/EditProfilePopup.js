@@ -14,10 +14,8 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   }, [currentUser, isOpen]);
 
   function handleSubmit(e) {
-    // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
   
-    // Передаём значения управляемых компонентов во внешний обработчик
     onUpdateUser({
       name,
       about: description,
@@ -41,7 +39,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           id="fullnameInput"
           minLength="2"
           maxLength="40"
-          value={name ?? ""}
+          value={name ? name : ""}
           required
           onChange={(e) => setName(e.target.value)}
         />
@@ -53,7 +51,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           id="identityInput"
           minLength="2"
           maxLength="200"
-          value={description ?? ""}
+          value={description ? description : ""}
           required
           onChange={(e) => setDescription(e.target.value)}
         />

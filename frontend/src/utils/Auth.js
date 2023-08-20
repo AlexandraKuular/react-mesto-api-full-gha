@@ -6,7 +6,6 @@ class Auth {
   
   _checkRes(res) {
     if (res.ok) {
-      Cookies.set
       return res.json();
     }
     return Promise.reject(`Ошибка ${res.status}`);

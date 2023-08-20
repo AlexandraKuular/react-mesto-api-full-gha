@@ -1,6 +1,6 @@
 import btnDeleteCard from '../images/Trash.svg';
 import btnLikeCard from '../images/Vector.svg';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {

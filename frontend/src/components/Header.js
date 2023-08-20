@@ -1,6 +1,7 @@
 import headerLogo from '../images/logo.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Cookies from "js-cookie";
+import React from 'react';
 
 function Header({ loggedIn, logOut, email }) {
   const navigate = useNavigate();

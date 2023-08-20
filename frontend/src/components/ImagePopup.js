@@ -1,4 +1,5 @@
 import btnPopupClose from '../images/CloseIcon.svg';
+import React from 'react';
 
 function ImagePopup(props) {
   return (

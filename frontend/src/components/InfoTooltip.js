@@ -1,6 +1,7 @@
 import btnPopupClose from '../images/CloseIcon.svg';
 import authSuccess from '../images/authSuccess.svg';
 import authFail from '../images/authFail.svg';
+import React from 'react';
 
 function InfoTooltip({ open, message, status, onClose }) {
 

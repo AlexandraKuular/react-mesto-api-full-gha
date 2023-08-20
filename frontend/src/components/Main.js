@@ -2,7 +2,7 @@ import profileAvatarBtnEdit from '../images/Edit.svg';
 import profileBtnEdit from '../images/EditButton.svg';
 import btnAddCard from '../images/AddButton.svg';
 import Card from './Card';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, cards, onCardDelete }) {
