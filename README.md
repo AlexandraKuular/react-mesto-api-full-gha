@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.73.174
+IP 51.250.73.174
 
 Frontend https://alexkuular.nomoreparties.co
 
