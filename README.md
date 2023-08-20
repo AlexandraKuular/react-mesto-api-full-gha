@@ -11,6 +11,6 @@
 
 IP-адрес 51.250.73.174
 
-Frontend https://...
+Frontend https://alexkuular.nomoreparties.co
 
-Backend https://...
+Backend https://api.alexkuular.nomoreparties.co

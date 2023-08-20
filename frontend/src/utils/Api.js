@@ -109,9 +109,9 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.alexkuular.nomoreparties.co/',
+  baseUrl: 'https://api.alexkuular.nomoreparties.co',
   headers: {
-    authorization: `Bearer ${Cookies.get("access-token")}`,
+    authorization: `Bearer ${Cookies.get("token")}`,
     'Content-Type': 'application/json'
   }
 });

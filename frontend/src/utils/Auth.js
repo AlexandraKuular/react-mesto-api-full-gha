@@ -42,7 +42,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  baseUrl: 'http://api.alexkuular.nomoreparties.co',
+  baseUrl: 'https://api.alexkuular.nomoreparties.co',
   headers: {
     'Content-Type': 'application/json'
   }

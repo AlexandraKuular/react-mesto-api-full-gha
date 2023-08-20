@@ -34,7 +34,7 @@ module.exports.deleteCard = (req, res, next) => {
       }
       if (card.owner.toString() === req.user._id) {
         Card.findByIdAndRemove(req.params.cardId)
-          .then(() => res.status(200).send({ result: true }).catch(next));
+          .then(() => res.status(200).send({ result: true }));
       } else {
         throw new ForbiddenError('Удалить чужую карточку нельзя.');
       }
@@ -49,6 +49,7 @@ module.exports.deleteCard = (req, res, next) => {
 };
 
 module.exports.likeCard = (req, res, next) => {
+  console.log(req);
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет

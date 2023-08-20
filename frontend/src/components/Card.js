@@ -4,12 +4,11 @@ import React, { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
-
   const currentUser = useContext(CurrentUserContext);
   // Определяем, являемся ли мы владельцем текущей карточки
-  const isOwn = card.owner._id === currentUser._id;
+  const isOwn = card.owner === currentUser._id;
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-  const isLiked = card.likes.some(i => i._id === currentUser._id);
+  const isLiked = card.likes && card.likes.some(id => id === currentUser._id);
   const cardLikeButtonClassName = ( 
     `card__like ${isLiked && 'card__like_active'}` 
   );
@@ -43,7 +42,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
             <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick} >
               <img src={btnLikeCard} alt="Кнопка лайк" />
             </button>
-            <p className="card__like-number">{card.likes.length}</p>
+            <p className="card__like-number">{card.likes ? card.likes.length : 0}</p>
           </div>
         </div>
       </article>

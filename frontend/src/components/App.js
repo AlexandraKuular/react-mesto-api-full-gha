@@ -68,15 +68,27 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-    
-    // Отправляем запрос в API и получаем обновлённые данные карточки
-    api
-      .likeCard({ idCard: card._id, isLiked})
-      .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-      })
-      .catch((err) => {console.log(err)});
+    const isLiked = card.likes.some(id => id === currentUser._id);
+    console.log(card);
+    console.log(currentUser);
+
+    if (isLiked) {
+      // Отправляем запрос в API и получаем обновлённые данные карточки
+      api
+        ._deleteLike(card._id)
+        .then(({card}) => {
+          setCards((state) => state.map((c) => c._id === card._id ? card : c));
+        })
+        .catch((err) => {console.log(err)});
+    } else {
+      // Отправляем запрос в API и получаем обновлённые данные карточки
+      api
+        .likeCard({ idCard: card._id, isLiked})
+        .then(({card}) => {
+          setCards((state) => state.map((c) => c._id === card._id ? card : c));
+        })
+        .catch((err) => {console.log(err)});
+    }
   }
 
   function handleCardDelete(card) {
@@ -89,19 +101,22 @@ function App() {
   }
 
   useEffect(() => {
-    Promise.all([api.getInitialCards(), api.getUserInfo()])
+    if (loggedIn) {
+      Promise.all([api.getInitialCards(), api.getUserInfo()])
         .then(([item, data]) => {
+          console.log(item, data);
           setCards(item);
           setCurrentUser(data);
         })
         .catch((err) => {console.log(err)});
-  }, []);
+    }
+  }, [loggedIn]);
 
   function handleUpdateUser({name, about}) {
     api
       .setUserInfo({name, about})
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.user);
         closeAllPopups();
       })
       .catch((err) => {console.log(err)});
@@ -110,8 +125,8 @@ function App() {
   function handleUpdateAvatar(data) {
     api
       .changeAvatar(data)
-      .then((avatar) => {
-        setCurrentUser(avatar);
+      .then(({user}) => {
+        setCurrentUser(user);
         closeAllPopups();
       })
       .catch((err) => {console.log(err)});
@@ -120,8 +135,8 @@ function App() {
   function handleAddPlaceSubmit(card) {
     api
       .addCard(card)
-      .then((newCard) => {
-        setCards([newCard, ...cards]);
+      .then(({card}) => {
+        setCards([card, ...cards]);
         closeAllPopups();
       })
       .catch((err) => {console.log(err)});
@@ -135,7 +150,6 @@ function App() {
         handleInfoTooltip();
       })
       .catch((err) => {
-        console.log(err);
         handleInfoTooltipFail();
       });
   }
@@ -150,14 +164,13 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
         handleInfoTooltipFail();
       });
   }
 
   function getMe() {
     const jwt = Cookies.get("token");
-
+    
     if(jwt) {
       auth
         .getMe(jwt)
@@ -173,7 +186,7 @@ function App() {
   }
 
   useEffect(() => {
-    if(localStorage.getItem('jwt')) {
+    if(Cookies.get('token')) {
       setLoggedIn(true);
     }
   }, []);

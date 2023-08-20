@@ -61,6 +61,7 @@ module.exports.addUser = async (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
+  console.log(password);
 
   User.findOne({ email }).select('+password')
     .then((user) => {
@@ -71,16 +72,16 @@ module.exports.login = (req, res, next) => {
       // сравниваем переданный пароль и хеш из базы
       return bcrypt.compare(password, user.password)
         .then((matched) => {
+          console.log(matched);
           if (!matched) {
             // хеши не совпали — отклоняем промис
             return Promise.reject(new UnauthorizedError('Неправильные почта или пароль'));
           }
+          console.log(process.env.JWT_SECRET);
           const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-
+          console.log(token);
           // вернём токен
           res.send({ token });
-          // аутентификация успешна
-          return res.send({ message: 'Добро пожаловать!' });
         });
     })
     .catch(next);
