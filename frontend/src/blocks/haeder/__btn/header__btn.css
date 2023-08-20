@@ -1,0 +1,17 @@
+.header__btn {
+  margin-top: 6px;
+  color: #ffffff;
+  background: none;
+  padding: 0;
+  border-style: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  cursor: pointer;
+}
+.header__btn:hover {
+  opacity: 0.6;
+}

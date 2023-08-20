@@ -46,3 +46,13 @@
 @import url(./blocks/popup/__image-name/popup__image-name.css);
 @import url(./blocks/error/error.css);
 @import url(./blocks/popup/__btn-submit/popup__btn-submit.css);
+@import url(./blocks/auth/auth.css);
+@import url(./blocks/auth/__title/auth__title.css);
+@import url(./blocks/auth/__btn/auth__btn.css);
+@import url(./blocks/auth/__input/auth__input.css);
+@import url(./blocks/auth/__link/auth__link.css);
+@import url(./blocks/popup/__auth-icon/popup__auth-icon.css);
+@import url(./blocks/popup/__auth-text/popup__auth-text.css);
+@import url(./blocks/haeder/__btn/header__btn.css);
+@import url(./blocks/haeder/__email/header__email.css);
+@import url(./blocks/haeder/__btn-out/header__btn-out.css);

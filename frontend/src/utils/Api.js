@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl
@@ -107,9 +109,9 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+  baseUrl: 'https://api.alexkuular.nomoreparties.co/',
   headers: {
-    authorization: '4f420279-59a6-4255-a181-2980d0015b09',
+    authorization: `Bearer ${Cookies.get("access-token")}`,
     'Content-Type': 'application/json'
   }
 });
