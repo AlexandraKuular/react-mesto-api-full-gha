@@ -5,6 +5,7 @@ const ErrorCode = require('../errors/errorCode');
 const ErrorNotFoundCode = require('../errors/errorNotFoundCode');
 const ConflictError = require('../errors/conflictError');
 const UnauthorizedError = require('../errors/unauthorizedError');
+const SECRET = require('../constants/secret');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -78,7 +79,7 @@ module.exports.login = (req, res, next) => {
             return Promise.reject(new UnauthorizedError('Неправильные почта или пароль'));
           }
           console.log(process.env.JWT_SECRET);
-          const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+          const token = jwt.sign({ _id: user._id }, SECRET);
           console.log(token);
           // вернём токен
           return res.send({ token });
