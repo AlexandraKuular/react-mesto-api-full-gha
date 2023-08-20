@@ -81,7 +81,7 @@ module.exports.login = (req, res, next) => {
           const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
           console.log(token);
           // вернём токен
-          res.send({ token });
+          return res.send({ token });
         });
     })
     .catch(next);
