@@ -1,3 +1,3 @@
 const SECRET = 'asdgfhgmnbv';
 
-export default SECRET;
+module.exports = SECRET;
