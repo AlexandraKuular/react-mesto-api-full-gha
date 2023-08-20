@@ -1,7 +1,7 @@
 const allowedCors = [
   'https://alexakuular.nomoredomains.co',
   'http://alexkuular.nomoredomains.co',
-  'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
 const cors = (req, res, next) => {
