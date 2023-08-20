@@ -14,6 +14,7 @@ const cors = (req, res, next) => {
     console.log(origin);
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Headers', '*');
   }
 
   if (method === 'OPTIONS') {
