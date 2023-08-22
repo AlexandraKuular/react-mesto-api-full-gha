@@ -1,11 +1,11 @@
 {
   "main.css": "./static/css/main.4c14bfc8.chunk.css",
-  "main.js": "./static/js/main.008a28f2.chunk.js",
-  "main.js.map": "./static/js/main.008a28f2.chunk.js.map",
+  "main.js": "./static/js/main.c57b725b.chunk.js",
+  "main.js.map": "./static/js/main.c57b725b.chunk.js.map",
   "static/js/1.c765bae6.chunk.js": "./static/js/1.c765bae6.chunk.js",
   "static/js/1.c765bae6.chunk.js.map": "./static/js/1.c765bae6.chunk.js.map",
-  "static/js/2.4c5847a5.chunk.js": "./static/js/2.4c5847a5.chunk.js",
-  "static/js/2.4c5847a5.chunk.js.map": "./static/js/2.4c5847a5.chunk.js.map",
+  "static/js/2.fa5a89e3.chunk.js": "./static/js/2.fa5a89e3.chunk.js",
+  "static/js/2.fa5a89e3.chunk.js.map": "./static/js/2.fa5a89e3.chunk.js.map",
   "runtime~main.js": "./static/js/runtime~main.a8e7fe7c.js",
   "runtime~main.js.map": "./static/js/runtime~main.a8e7fe7c.js.map",
   "static/media/CloseIcon.svg": "./static/media/CloseIcon.7fc20204.svg",
@@ -20,6 +20,6 @@
   "static/media/index.css": "./static/media/Inter-Black.d0b121f3.woff",
   "static/css/main.4c14bfc8.chunk.css.map": "./static/css/main.4c14bfc8.chunk.css.map",
   "index.html": "./index.html",
-  "precache-manifest.c488523a76a0b642efa358cfa1a86b8b.js": "./precache-manifest.c488523a76a0b642efa358cfa1a86b8b.js",
+  "precache-manifest.4c5165ad44578f9827d285caac511d1c.js": "./precache-manifest.4c5165ad44578f9827d285caac511d1c.js",
   "service-worker.js": "./service-worker.js"
 }
