@@ -1,5 +1,9 @@
 require('dotenv').config();
 
+process.on('uncaughtException', (err) => {
+  console.log(err);
+});
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
