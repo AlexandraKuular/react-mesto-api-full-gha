@@ -5,7 +5,8 @@ const ErrorCode = require('../errors/errorCode');
 const ErrorNotFoundCode = require('../errors/errorNotFoundCode');
 const ConflictError = require('../errors/conflictError');
 const UnauthorizedError = require('../errors/unauthorizedError');
-const SECRET = require('../constants/secret');
+
+const { JWT_SECRET, NODE_ENV } = process.env;
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -52,8 +53,6 @@ module.exports.addUser = async (req, res, next) => {
   } catch (err) {
     if (err.code === 11000) {
       next(new ConflictError('Пользователь с таким email уже существует.'));
-    } else if (err.name === 'CastError') {
-      next(new ErrorCode('Переданы некорректные данные при создании пользователя.'));
     } else {
       next(err);
     }
@@ -62,7 +61,6 @@ module.exports.addUser = async (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(password);
 
   User.findOne({ email }).select('+password')
     .then((user) => {
@@ -73,13 +71,12 @@ module.exports.login = (req, res, next) => {
       // сравниваем переданный пароль и хеш из базы
       return bcrypt.compare(password, user.password)
         .then((matched) => {
-          console.log(matched);
           if (!matched) {
             // хеши не совпали — отклоняем промис
             return Promise.reject(new UnauthorizedError('Неправильные почта или пароль'));
           }
           console.log(process.env.JWT_SECRET);
-          const token = jwt.sign({ _id: user._id }, SECRET);
+          const token = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key'}`, { expiresIn: '7d' });
           console.log(token);
           // вернём токен
           return res.send({ token });

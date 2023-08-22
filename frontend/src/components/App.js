@@ -30,6 +30,8 @@ function App() {
   const [email, setEmail] = useState();
 
   const logOut = () => {
+    Cookies.remove('token');
+    setEmail('');
     setLoggedIn(false);
   }
   
@@ -69,8 +71,6 @@ function App() {
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(id => id === currentUser._id);
-    console.log(card);
-    console.log(currentUser);
 
     if (isLiked) {
       // Отправляем запрос в API и получаем обновлённые данные карточки
@@ -144,10 +144,11 @@ function App() {
 
 
   function handleRegister({ email, password }) {
-    auth
+    return auth
       .register({ email, password })
-      .then(() => {
+      .then((res) => {
         handleInfoTooltip();
+        return res;
       })
       .catch((err) => {
         handleInfoTooltipFail();
@@ -174,7 +175,7 @@ function App() {
     if(jwt) {
       auth
         .getMe(jwt)
-        .then(({data}) => {
+        .then((data) => {
           if(data.email) {
             setEmail(data.email);
           }

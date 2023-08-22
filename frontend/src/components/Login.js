@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function Login({ onSubmit }) {
 
@@ -7,8 +6,6 @@ function Login({ onSubmit }) {
     email: '',
     password: ''
   });
-
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;

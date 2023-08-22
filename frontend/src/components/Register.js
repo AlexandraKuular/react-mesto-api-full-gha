@@ -16,11 +16,17 @@ function Register({ onSubmit }) {
       [name]: value
     });
   }
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formValue);
-    navigate('/sign-in');
+    const a = onSubmit(formValue)
+    .then(
+      res => {
+        if (res) {
+        navigate('/sign-in');
+      }
+      }
+    );
   }
 
   return (

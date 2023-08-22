@@ -18,7 +18,10 @@ class Api {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${Cookies.get("token")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkRes);
   }
@@ -27,7 +30,10 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${Cookies.get("token")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(res => {
         return this._checkRes(res);
@@ -38,7 +44,10 @@ class Api {
   setUserInfo(userInfo) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${Cookies.get("token")}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: userInfo.name,
         about: userInfo.about
@@ -51,7 +60,10 @@ class Api {
   addCard(card) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${Cookies.get("token")}`,
+        'Content-Type': 'application/json'
+      },
       'Content-Type': 'application/json',
       body: JSON.stringify({
         name: card.name,
@@ -65,7 +77,10 @@ class Api {
     changeAvatar(data) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: "PATCH",
-        headers: this._headers,
+        headers: {
+          authorization: `Bearer ${Cookies.get("token")}`,
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           avatar: data.avatar
         })
@@ -77,7 +92,10 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${Cookies.get("token")}`,
+        'Content-Type': 'application/json'
+      }
     })
     .then(this._checkRes);
   }
@@ -86,7 +104,10 @@ class Api {
   _putLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${Cookies.get("token")}`,
+        'Content-Type': 'application/json'
+      }
     })
     .then(this._checkRes);
   }
@@ -95,7 +116,10 @@ class Api {
   _deleteLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${Cookies.get("token")}`,
+        'Content-Type': 'application/json'
+      }
     })
     .then(this._checkRes);
   }
@@ -109,10 +133,6 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.alexkuular.nomoreparties.co',
-  headers: {
-    authorization: `Bearer ${Cookies.get("token")}`,
-    'Content-Type': 'application/json'
-  }
+  baseUrl: 'https://api.alexkuular.nomoreparties.co'
 });
 export default api;
